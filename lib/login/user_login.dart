@@ -4,6 +4,6 @@ class UserModel{
 
   UserModel({
     required this.email,
-    required this.token
+    required this.token,
 });
 }

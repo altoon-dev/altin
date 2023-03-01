@@ -104,8 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
                          textInputAction: TextInputAction.done,
                         onEditingComplete: ()async{
                            UserModel? user = await _loginService.login(_emailController.text,_passwordController.text );
-                           Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) =>LoginScreen(user:user);
-
+                           Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) =>LoginScreen(user:user)
                            )
                            );
                         },
