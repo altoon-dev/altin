@@ -102,12 +102,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                        TextFormField(
                          textInputAction: TextInputAction.done,
-                        onEditingComplete: ()async{
-                           UserModel? user = await _loginService.login(_emailController.text,_passwordController.text );
-                           Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) =>LoginScreen(user:user)
-                           )
-                           );
-                        },
+                      //  onEditingComplete: ()async{
+                        ////   UserModel? user = await _loginService.login(_emailController.text,_passwordController.text );
+                        //   Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) =>LoginScreen(user:user))
+
+
+                        //},
                         controller: _passwordController,
                         obscureText: _isObscure,
                         decoration: InputDecoration(
