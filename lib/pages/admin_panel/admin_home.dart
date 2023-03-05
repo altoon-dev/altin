@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:altyn_login/widgets.dart';
 
 
 
@@ -17,41 +18,47 @@ class _AdminHomeState extends State<AdminHome> {
       body: SafeArea(
         child: Column(
           children: [
-
             Container(
-              color: Color(0xFF2A3037),
+              color: const Color(0xFF2A3037),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  Row(
+                    children:[
                   SvgPicture.asset('images/logo_2.svg'),
-                  Text("ALTIN FINTECH"),
-                  CircleAvatar(
+                  const Text("ALTIN FINTECH"),],),
+                  Row(
+                    children:[
+                  const CircleAvatar(
                     backgroundImage: NetworkImage('https://i.pinimg.com/736x/8a/76/04/8a76047d18e7b0a26524c89326295824.jpg'),
                   radius: 20,),
-                  Text('Zhursunali Bagdar'),
-                  Icon(
+                  SizedBox(width: 20,),
+                  const Text('Zhursunali Bagdar'),
+                  const Icon(
                     Icons.arrow_drop_down,
                     color: Color(
                       0xFF65849D,
                     ),),
-                  Icon(
-                    Icons.language, color: Color(0xFF65849D,
+                  const Icon(
+                    Icons.language, color:  Color(0xFF65849D,
                   ),
                   ),
-                  SizedBox(width: 5),
-                  Text("Рус"),
-                  SizedBox(width: 5),
-                  Icon(
+                  const SizedBox(width: 5),
+                  const Text("Рус"),
+                  const SizedBox(width: 5),
+                  const Icon(
                     Icons.arrow_drop_down,
                     color: Color(0xFF65849D,
                     ),
-                  ),],
+                  ),],),],
               ),
             ),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             Container(
-              margin: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
+              margin: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(200.0),
                     topRight: Radius.circular(10),
                     bottomLeft: Radius.circular(200),
@@ -61,7 +68,7 @@ class _AdminHomeState extends State<AdminHome> {
                     width: 3,
                     color: Colors.transparent,
                   ),
-                gradient: LinearGradient(
+                gradient: const LinearGradient(
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
                   colors:[
@@ -70,23 +77,68 @@ class _AdminHomeState extends State<AdminHome> {
                   ],
                 )
               ),
-              child: Row(
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SizedBox(width: 10,),
                   CircleAvatar( radius: 50,
                   backgroundImage: NetworkImage('https://img.republicworld.com/republic-prod/stories/promolarge/xhdpi/nhntnouqoyudczy1_1603714428.jpeg'),),
-                  SizedBox(width: 10,),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      IconText(icon: Icons.favorite_outline_outlined, text: "1984",),
+                      IconText(icon: Icons.transgender_outlined, text: "male",),
+                      Row(children: [
+                        Icon(Icons.contact_mail,color: Color(0xFF0092FF),),
+                        SizedBox(width: 10,),
+                        Text('87471948836'),
+                      ],),
+                      Row(children: [
+                        Icon(Icons.email_outlined,color: Color(0xFF0092FF),),
+                        Icon(Icons.email_outlined,color: Color(0xFF0092FF),),
+                        SizedBox(width: 10,),
+                        Text('ronaldoGay@gmail.com'),
+                      ],),
+                      ],),
                   Column(
                     children: [
-                          Text('Khabib'),
-                          Text('Abdulmanapovich'),
-                          Text('Nurmagomedov'),
-                        ],
-                      )
+                      Text('Khabib'),
+                      Text('Abdulmanapovich'),
+                      Text('Nurmagomedov'),
                     ],
-                  )
-            ),],
+                  ),
+                  Column(
+                    children: [
+                      Text('Khabib'),
+                      Text('Abdulmanapovich'),
+                      Text('Nurmagomedov'),
+                    ],
+                  ),
+                    ],
+                  ),
+            ),
+          SizedBox(height: 20,),
+            Row(children: [
+              Column(
+                children: [
+                  Text(''),
+                  GrayContainer(
+                    
+                  ),
+
+                ],
+              ),
+              Column(children: [],),
+              Column(children: [],),
+            ],)
+          ],
+
+
               ),
             ),
     );
   }}
+
+
+
+
+

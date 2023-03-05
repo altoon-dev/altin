@@ -74,76 +74,88 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SvgPicture.asset('assets/logo.svg'),
+                      SvgPicture.asset('images/logo.svg'),
                       SizedBox(
                         height: 30,
                       ),
-                      TextFormField(
-                        inputFormatters: [maskFormatter],
-                        controller: _emailController,
-                        decoration: InputDecoration(
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFA1B4D0).withOpacity(0.25),),),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.blue),),
-                          border: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.red),
+                  Container(
+                    width: 500,
+                        child: TextFormField(
+                          inputFormatters: [maskFormatter],
+                          controller: _emailController,
+                          decoration: InputDecoration(
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Color(0xFFA1B4D0).withOpacity(0.25),),),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.blue),),
+                            border: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red),
+                              ),
+                            hintText: "Login",
+                            hintStyle: TextStyle(
+                              color: Color(0xFF65849D),
                             ),
-                          hintText: "Login",
-                         // errorText: "Данный номер не зарегестрирован!",
-                          hintStyle: TextStyle(
-                            color: Color(0xFF65849D),
+                            fillColor: Color(0xFF65849D),
                           ),
-                          fillColor: Color(0xFF65849D),
+                          validator: (String? phoneNumber) {
+                            print(phoneNumber);
+                            if (phoneNumber != null && phoneNumber.length < 19) {
+                              return "Phone number is not correct!";
+                            }
+                            return null;
+                          },
                         ),
                       ),
                       SizedBox(
                         height: 20,
                       ),
-                       TextFormField(
-                         textInputAction: TextInputAction.done,
+                       Container(
+                         width: 500,
+                         child: TextFormField(
+                           textInputAction: TextInputAction.done,
                       //  onEditingComplete: ()async{
-                        ////   UserModel? user = await _loginService.login(_emailController.text,_passwordController.text );
-                        //   Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) =>LoginScreen(user:user))
+                          ////   UserModel? user = await _loginService.login(_emailController.text,_passwordController.text );
+                          //   Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) =>LoginScreen(user:user))
 
-
-                        //},
-                        controller: _passwordController,
-                        obscureText: _isObscure,
-                        decoration: InputDecoration(
-                       enabledBorder: UnderlineInputBorder(
-                       borderSide: BorderSide(color: Color(0xFFA1B4D0).withOpacity(0.25),),),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.blue),),
-                          border: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.red,),
+                          //},
+                          controller: _passwordController,
+                          obscureText: _isObscure,
+                          decoration: InputDecoration(
+                         enabledBorder: UnderlineInputBorder(
+                         borderSide: BorderSide(color: Color(0xFFA1B4D0).withOpacity(0.25),),),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.blue),),
+                            border: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.red,),
+                              ),
+                            hintText: "Password",
+                            //errorText: "Неверный пароль!",
+                            suffixIcon: IconButton(
+                              icon: Icon(_isObscure ? Icons.visibility : Icons.visibility_off),
+                              onPressed: (){
+                                setState(() {
+                                  _isObscure = !_isObscure;
+                                });
+                              },
                             ),
-                          hintText: "Password",
-                          //errorText: "Неверный пароль!",
-                          suffixIcon: IconButton(
-                            icon: Icon(_isObscure ? Icons.visibility : Icons.visibility_off),
-                            onPressed: (){
-                              setState(() {
-                                _isObscure = !_isObscure;
-                              });
-                            },
+                            hintStyle: TextStyle(
+                              color: Color(0xFF65849D),
+                            ),
+                            fillColor: Color(0xFF65849D),
                           ),
-                          hintStyle: TextStyle(
-                            color: Color(0xFF65849D),
-                          ),
-                          fillColor: Color(0xFF65849D),
-                        ),
-                         // validator: (String? UserName) {
-                         //   if (UserName != null && UserName.isEmpty) {
-                         //     return "Email can't be empty";
-                         //   }
-                         //   return null;
-                         // },
+                           validator: (String? UserName) {
+                             if (UserName != null && UserName.isEmpty) {
+                               return "Email can't be empty";
+                             }
+                             return null;
+                           },
                       ),
+                       ),
                       SizedBox(
                         height: 10,
                       ),
                       Container(
+                        width: 500,
                         alignment: Alignment.centerRight,
                         child: InkWell(
                           onTap: () {},
@@ -162,18 +174,20 @@ class _LoginScreenState extends State<LoginScreen> {
                       FilledButton(
                         style: ButtonStyle(
                           minimumSize: MaterialStateProperty.all(
-                            Size(
-                              (Platform.isIOS || Platform.isAndroid)
-                                  ? MediaQuery.of(context).size.width / 1.6
-                                  : 300,
-                              45,
-                            ),
-                          ),
+                            Size(200,60),),
                           backgroundColor: MaterialStateColor.resolveWith(
                                 (states) => Color(0xFF448BF5),
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            // If the form is valid, display a snackbar. In the real world,
+                            // you'd often call a server or save the information in a database.
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('Processing Data')),
+                            );
+                          }
+                        },
                         child: Text("ВОЙТИ"),
                       ),
                     ],
