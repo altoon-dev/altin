@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 
 class IconText extends StatelessWidget {
   final IconData icon;
@@ -13,7 +13,7 @@ class IconText extends StatelessWidget {
     return Row(children: [
       Icon(icon, color: const Color(0xFF0092FF),),
       SizedBox(width: 10,),
-      Text(text),
+      Text(text, style: GoogleFonts.nunito(fontSize: 16),),
     ],);
   }
 }

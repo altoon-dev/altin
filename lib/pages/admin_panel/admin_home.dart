@@ -1,6 +1,9 @@
+import 'package:altyn_login/gray_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:altyn_login/widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 
 
 
@@ -13,129 +16,466 @@ class AdminHome extends StatefulWidget {
 
 class _AdminHomeState extends State<AdminHome> {
   @override
+  String dropdownvalue = 'Pass';
+
+  // List of items in our dropdown menu
+  var items = [
+    'Pass',
+    'Fail',
+    '',
+
+  ];
+
+  String? selectedValue = null;
+  final _dropdownFormKey = GlobalKey<FormState>();
   Widget build(BuildContext context) {
+    var dropdownItems;
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            Container(
-              color: const Color(0xFF2A3037),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children:[
-                  SvgPicture.asset('images/logo_2.svg'),
-                  const Text("ALTIN FINTECH"),],),
-                  Row(
-                    children:[
-                  const CircleAvatar(
-                    backgroundImage: NetworkImage('https://i.pinimg.com/736x/8a/76/04/8a76047d18e7b0a26524c89326295824.jpg'),
-                  radius: 20,),
-                  SizedBox(width: 20,),
-                  const Text('Zhursunali Bagdar'),
-                  const Icon(
-                    Icons.arrow_drop_down,
-                    color: Color(
-                      0xFF65849D,
-                    ),),
-                  const Icon(
-                    Icons.language, color:  Color(0xFF65849D,
+        child:
+        SingleChildScrollView(
+          child: Column(
+              children: [
+                Container(
+                  color: const Color(0xFF2A3037),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children:[
+                         const SizedBox(width: 20,),
+                      SvgPicture.asset('images/logo_2.svg'),
+                          const SizedBox(width: 10,),
+                          Text("ALTIN FINTECH",style: GoogleFonts.montserrat(fontSize: 24,color: const Color(0xFFD8D8D8)),
+
+                        ),],),
+                       Row(
+                        children:[
+                          const CircleAvatar( radius: 20,
+                            backgroundImage: NetworkImage('https://img.republicworld.com/republic-prod/stories/promolarge/xhdpi/nhntnouqoyudczy1_1603714428.jpeg'),),
+                      const SizedBox(width: 20,),
+                       Text("Zhursunali Bagdar",style: GoogleFonts.nunito(fontSize: 20,color: Colors.white),),
+                          const SizedBox(width: 5,),
+                          const Icon(
+                        Icons.arrow_drop_down,
+                        color: Colors.white),
+                          const SizedBox(width: 20,),
+                          const Icon(
+                        Icons.language, color:  Colors.white,),
+                       const SizedBox(width: 10),
+                       Text("Рус",style: GoogleFonts.nunito(fontSize: 20,color: Colors.white),),
+                       const SizedBox(width: 10),
+                       const Icon(
+                        Icons.arrow_drop_down,
+                        color: Colors.white,
+                      ),],),],
                   ),
+                ),
+                const SizedBox(height: 20,),
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  margin: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(200.0),
+                        topRight: Radius.circular(10),
+                        bottomLeft: Radius.circular(200),
+                        bottomRight: Radius.circular(10),
+                      ),
+                      border: Border.all(
+                        width: 3,
+                        color: Colors.transparent,
+                      ),
+                    gradient: const LinearGradient(
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft,
+                      colors:[
+                        Colors.blue,
+                        Colors.cyanAccent
+                      ],
+                    )
                   ),
-                  const SizedBox(width: 5),
-                  const Text("Рус"),
-                  const SizedBox(width: 5),
-                  const Icon(
-                    Icons.arrow_drop_down,
-                    color: Color(0xFF65849D,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const CircleAvatar( radius: 80,
+                      backgroundImage: NetworkImage('https://img.republicworld.com/republic-prod/stories/promolarge/xhdpi/nhntnouqoyudczy1_1603714428.jpeg'),),
+                      Column(
+                        children: [
+                          Text('Khabib', style: GoogleFonts.nunito(fontSize: 32,fontWeight: FontWeight.w700 ),),
+                          Text('Abdulmanapovich',style: GoogleFonts.nunito(fontSize: 32,fontWeight: FontWeight.w700 ),),
+                          Text('Nurmagomedov',style: GoogleFonts.nunito(fontSize: 32,fontWeight: FontWeight.w700 ),),
+                        ],
+                      ),
+                      const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          IconText(icon: Icons.favorite_outlined, text: "20.09.1984",),
+                          SizedBox(height: 15,),
+                          IconText(icon: Icons.transgender_outlined, text: "male",),
+                          SizedBox(height: 15,),
+                          IconText(icon: Icons.contact_mail, text: '87471948836'),
+                          SizedBox(height: 15,),
+                          IconText(icon: Icons.email_outlined, text: 'ronaldoGay@gmail.com')
+                          ],),
+                      const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          IconText(icon: Icons.call, text: '+7-747-194-88-36'),
+                          SizedBox(height: 30,),
+                          IconText(icon: Icons.home_filled, text: 'Almaty, Kazakhstan, Nauryzbay 194'),
+                          SizedBox(height: 30,),
+                          IconText(icon: Icons.important_devices_sharp, text: 'kjlknnskndslkgsdnlknslkn'),
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Дата подачи документов на регистрацию:', style: GoogleFonts.nunito(fontSize: 16),),
+                          Text('Дата рассмотрения заявок:', style: GoogleFonts.nunito(fontSize: 16),),
+                          Text('Дата регистраций клиента:',style: GoogleFonts.nunito(fontSize: 16),),
+                          Container(
+                            width: 400,
+                            alignment: Alignment.bottomRight,
+                            child: InkWell(
+                              onTap: () {},
+                              child: Text(
+                                "Забыли пароль?",
+                                style: GoogleFonts.nunito(fontSize: 20, fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              const SizedBox(height: 20,),
+                Text("KYC REPORTS", style: GoogleFonts.nunito(fontSize: 28,fontWeight: FontWeight.w700, color: const Color(0xFF8FA0AB)),),
+                const SizedBox(height: 30,),
+                Container(child: Text('Identification & Verification Report (Verigram)', style: GoogleFonts.nunito(fontSize: 18,color: Colors.white),),
+                color: const Color(0xFF4F5966,),width: double.infinity,),
+                const SizedBox(height: 30,),
+                Column(
+                  children: [
+                    Container(color: const Color(0xFFEFF2F5),
+                      child: Row(
+                        children: [
+                          Text('Passport check:',style: GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.w300),),
+                          SizedBox(width: 350,),
+                          DropdownButton(
+                            value: dropdownvalue,
+                            icon: const Icon(Icons.keyboard_arrow_down),
+                            items: items.map((String items) {
+                              return DropdownMenuItem(
+                                value: items,
+                                child: Text(items),
+                              );
+                            }).toList(),
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                dropdownvalue = newValue!;
+                              });
+                            },
+                          ),
+                          SizedBox(width: 20,),
+                          const Icon(Icons.done, color: Colors.green,),
+                          SizedBox(width: 300,),
+                          const Flexible(child: TextField(
+                            decoration: InputDecoration(fillColor: Colors.white,filled: true,
+                              border: OutlineInputBorder(),
+                            ),
+                          ),
+                          ), ],
+                      ),
                     ),
-                  ),],),],
-              ),
-            ),
-            const SizedBox(height: 20,),
-            Container(
-              padding: const EdgeInsets.all(20),
-              margin: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(200.0),
-                    topRight: Radius.circular(10),
-                    bottomLeft: Radius.circular(200),
-                    bottomRight: Radius.circular(10),
-                  ),
-                  border: Border.all(
-                    width: 3,
-                    color: Colors.transparent,
-                  ),
-                gradient: const LinearGradient(
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                  colors:[
-                    Colors.blue,
-                    Colors.cyanAccent
+                    SizedBox(height: 10,),
+                    Container(color: const Color(0xFFEFF2F5),
+                      child: Row(
+                        children: [
+                          Text('Passport check:',style: GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.w300),),
+                          SizedBox(width: 350,),
+                          DropdownButton(
+                            value: dropdownvalue,
+                            icon: const Icon(Icons.keyboard_arrow_down),
+                            items: items.map((String items) {
+                              return DropdownMenuItem(
+                                value: items,
+                                child: Text(items),
+                              );
+                            }).toList(),
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                dropdownvalue = newValue!;
+                              });
+                            },
+                          ),
+                          SizedBox(width: 20,),
+                          const Icon(Icons.done, color: Colors.green,),
+                          SizedBox(width: 300,),
+                          const Flexible(child: TextField(
+                            decoration: InputDecoration(fillColor: Colors.white,filled: true,
+                              border: OutlineInputBorder(),
+                            ),
+                          ),
+                          ), ],
+                      ),
+                    ),
+                    SizedBox(height: 10,),
+                    Container(color: const Color(0xFFEFF2F5),
+                      child: Row(
+                        children: [
+                          Text('Passport check:',style: GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.w300),),
+                          SizedBox(width: 350,),
+                          DropdownButton(
+                            value: dropdownvalue,
+                            icon: const Icon(Icons.keyboard_arrow_down),
+                            items: items.map((String items) {
+                              return DropdownMenuItem(
+                                value: items,
+                                child: Text(items),
+                              );
+                            }).toList(),
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                dropdownvalue = newValue!;
+                              });
+                            },
+                          ),
+                          SizedBox(width: 20,),
+                          const Icon(Icons.done, color: Colors.green,),
+                          SizedBox(width: 300,),
+                          const Flexible(child: TextField(
+                            decoration: InputDecoration(fillColor: Colors.white,filled: true,
+                              border: OutlineInputBorder(),
+                            ),
+                          ),
+                          ), ],
+                      ),
+                    ),
                   ],
-                )
-              ),
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CircleAvatar( radius: 50,
-                  backgroundImage: NetworkImage('https://img.republicworld.com/republic-prod/stories/promolarge/xhdpi/nhntnouqoyudczy1_1603714428.jpeg'),),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      IconText(icon: Icons.favorite_outline_outlined, text: "1984",),
-                      IconText(icon: Icons.transgender_outlined, text: "male",),
-                      Row(children: [
-                        Icon(Icons.contact_mail,color: Color(0xFF0092FF),),
-                        SizedBox(width: 10,),
-                        Text('87471948836'),
-                      ],),
-                      Row(children: [
-                        Icon(Icons.email_outlined,color: Color(0xFF0092FF),),
-                        Icon(Icons.email_outlined,color: Color(0xFF0092FF),),
-                        SizedBox(width: 10,),
-                        Text('ronaldoGay@gmail.com'),
-                      ],),
-                      ],),
+                ),
+                Container(child: Text('Sanctions & PEP screening', style: GoogleFonts.nunito(fontSize: 18,color: Colors.white),),
+                  color: const Color(0xFF4F5966,),width: double.infinity,),
+                const SizedBox(height: 30,),
                   Column(
                     children: [
-                      Text('Khabib'),
-                      Text('Abdulmanapovich'),
-                      Text('Nurmagomedov'),
+                      Container(color: const Color(0xFFEFF2F5),
+                        child: Row(
+                          children: [
+                            Text('Passport check:',style: GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.w300),),
+                            SizedBox(width: 350,),
+                            DropdownButton(
+                              value: dropdownvalue,
+                              icon: const Icon(Icons.keyboard_arrow_down),
+                              items: items.map((String items) {
+                                return DropdownMenuItem(
+                                  value: items,
+                                  child: Text(items),
+                                );
+                              }).toList(),
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  dropdownvalue = newValue!;
+                                });
+                              },
+                            ),
+                            SizedBox(width: 20,),
+                            const Icon(Icons.done, color: Colors.green,),
+                            SizedBox(width: 300,),
+                            const Flexible(child: TextField(
+                              decoration: InputDecoration(fillColor: Colors.white,filled: true,
+                                border: OutlineInputBorder(),
+                              ),
+                            ),
+                            ), ],
+                        ),
+                      ),
+                      SizedBox(height: 10,),
+                      Container(color: const Color(0xFFEFF2F5),
+                        child: Row(
+                          children: [
+                            Text('Passport check:',style: GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.w300),),
+                            SizedBox(width: 350,),
+                            DropdownButton(
+                              value: dropdownvalue,
+                              icon: const Icon(Icons.keyboard_arrow_down),
+                              items: items.map((String items) {
+                                return DropdownMenuItem(
+                                  value: items,
+                                  child: Text(items),
+                                );
+                              }).toList(),
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  dropdownvalue = newValue!;
+                                });
+                              },
+                            ),
+                            SizedBox(width: 20,),
+                            const Icon(Icons.done, color: Colors.green,),
+                            SizedBox(width: 300,),
+                            const Flexible(child: TextField(
+                              decoration: InputDecoration(fillColor: Colors.white,filled: true,
+                                border: OutlineInputBorder(),
+                              ),
+                            ),
+                            ), ],
+                        ),
+                      ),
+                      SizedBox(height: 10,),
+                      Container(color: const Color(0xFFEFF2F5),
+                        child: Row(
+                          children: [
+                            Text('Passport check:',style: GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.w300),),
+                            SizedBox(width: 350,),
+                            DropdownButton(
+                              value: dropdownvalue,
+                              icon: const Icon(Icons.keyboard_arrow_down),
+                              items: items.map((String items) {
+                                return DropdownMenuItem(
+                                  value: items,
+                                  child: Text(items),
+                                );
+                              }).toList(),
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  dropdownvalue = newValue!;
+                                });
+                              },
+                            ),
+                            SizedBox(width: 20,),
+                            const Icon(Icons.done, color: Colors.green,),
+                            SizedBox(width: 300,),
+                            const Flexible(child: TextField(
+                              decoration: InputDecoration(fillColor: Colors.white,filled: true,
+                                border: OutlineInputBorder(),
+                              ),
+                            ),
+                            ), ],
+                        ),
+                      ),
+                      SizedBox(height: 10,),
+                      Container(color: const Color(0xFFEFF2F5),
+                        child: Row(
+                          children: [
+                            Text('Passport check:',style: GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.w300),),
+                            SizedBox(width: 350,),
+                            DropdownButton(
+                              value: dropdownvalue,
+                              icon: const Icon(Icons.keyboard_arrow_down),
+                              items: items.map((String items) {
+                                return DropdownMenuItem(
+                                  value: items,
+                                  child: Text(items),
+                                );
+                              }).toList(),
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  dropdownvalue = newValue!;
+                                });
+                              },
+                            ),
+                            SizedBox(width: 20,),
+                            const Icon(Icons.done, color: Colors.green,),
+                            SizedBox(width: 300,),
+                            const Flexible(child: TextField(
+                              decoration: InputDecoration(fillColor: Colors.white,filled: true,
+                                border: OutlineInputBorder(),
+                              ),
+                            ),
+                            ), ],
+                        ),
+                      ),
+
                     ],
                   ),
+                Container(child: Text('Address report', style: GoogleFonts.nunito(fontSize: 18,color: Colors.white),),
+                  color: const Color(0xFF4F5966,),width: double.infinity,),
+                const SizedBox(height: 30,),
                   Column(
                     children: [
-                      Text('Khabib'),
-                      Text('Abdulmanapovich'),
-                      Text('Nurmagomedov'),
+                      SizedBox(height: 10,),
+                      Container(color: const Color(0xFFEFF2F5),
+                        child: Row(
+                          children: [
+                            Text('Passport check:',style: GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.w300),),
+                            SizedBox(width: 350,),
+                            DropdownButton(
+                              value: dropdownvalue,
+                              icon: const Icon(Icons.keyboard_arrow_down),
+                              items: items.map((String items) {
+                                return DropdownMenuItem(
+                                  value: items,
+                                  child: Text(items),
+                                );
+                              }).toList(),
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  dropdownvalue = newValue!;
+                                });
+                              },
+                            ),
+                            SizedBox(width: 20,),
+                            const Icon(Icons.done, color: Colors.green,),
+                            SizedBox(width: 300,),
+                            const Flexible(child: TextField(
+                              decoration: InputDecoration(fillColor: Colors.white,filled: true,
+                                border: OutlineInputBorder(),
+                              ),
+                            ),
+                            ), ],
+                        ),
+                      ),
                     ],
-                  ),
-                    ],
-                  ),
-            ),
-          SizedBox(height: 20,),
-            Row(children: [
-              Column(
-                children: [
-                  Text(''),
-                  GrayContainer(
-                    
                   ),
 
+                const SizedBox(height: 30,),
+                Text("Изменить статус пользователя", style: GoogleFonts.nunito(fontSize: 28,fontWeight: FontWeight.w700, color: const Color(0xFF8FA0AB)),),
+              const SizedBox(height: 30,),
+              Container(width: double.infinity,
+                child:Column(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: new ButtonBar(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        TextButton(
+                          child: Text('Принять', style: GoogleFonts.nunito(fontSize: 14, fontWeight: FontWeight.w700),),
+                          style: TextButton.styleFrom(
+                            primary: Colors.white,
+                            backgroundColor: const Color(0xFF247CFF),
+                          ),
+                          onPressed: () {/** */},
+                        ),
+                        const SizedBox(width: 20,),
+                        TextButton(
+                          child: Text('Отклонить', style: GoogleFonts.nunito(fontSize: 14, fontWeight: FontWeight.w700),),
+                          style: TextButton.styleFrom(
+                            primary: const Color(0xFF0C4471),
+                            backgroundColor: Colors.white,
+                          ),
+                          onPressed: () {/** */},
+                        ),
+                        const SizedBox(width: 20,),
+                        TextButton(
+                          child: Text('Доп. проверка', style: GoogleFonts.nunito(fontSize: 14, fontWeight: FontWeight.w700),),
+                          style: TextButton.styleFrom(
+                            primary: const Color(0xFF0C4471),
+                            backgroundColor: Colors.white,
+                          ),
+                          onPressed: () {/** */},
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
+              ), color: const Color(0xFFEFF2F5),
               ),
-              Column(children: [],),
-              Column(children: [],),
-            ],)
-          ],
-
-
-              ),
-            ),
-    );
+          ],),
+        ),
+      ),);
   }}
 
 
