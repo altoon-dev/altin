@@ -16,14 +16,13 @@ class AdminHome extends StatefulWidget {
 
 class _AdminHomeState extends State<AdminHome> {
   @override
-  String dropdownvalue = 'Pass';
+  String dropdownvalue = '';
 
   // List of items in our dropdown menu
   var items = [
     'Pass',
     'Fail',
     '',
-
   ];
 
   String? selectedValue = null;
@@ -37,6 +36,7 @@ class _AdminHomeState extends State<AdminHome> {
           child: Column(
               children: [
                 Container(
+                  padding: EdgeInsets.all(5),
                   color: const Color(0xFF2A3037),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -90,8 +90,8 @@ class _AdminHomeState extends State<AdminHome> {
                       begin: Alignment.topRight,
                       end: Alignment.bottomLeft,
                       colors:[
-                        Colors.blue,
-                        Colors.cyanAccent
+                        Color(0xFFA4E2F5),
+                        Color(0xFFE4EAEE),
                       ],
                     )
                   ),
@@ -153,16 +153,24 @@ class _AdminHomeState extends State<AdminHome> {
               const SizedBox(height: 20,),
                 Text("KYC REPORTS", style: GoogleFonts.nunito(fontSize: 28,fontWeight: FontWeight.w700, color: const Color(0xFF8FA0AB)),),
                 const SizedBox(height: 30,),
-                Container(child: Text('Identification & Verification Report (Verigram)', style: GoogleFonts.nunito(fontSize: 18,color: Colors.white),),
+                Container(padding: EdgeInsets.only(left: 30),
+                  child: Text('Identification & Verification Report (Verigram)', style: GoogleFonts.nunito(fontSize: 18,color: Colors.white),),
                 color: const Color(0xFF4F5966,),width: double.infinity,),
                 const SizedBox(height: 30,),
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(color: const Color(0xFFEFF2F5),
+                    Container(
+                      padding: EdgeInsets.only(left: 30),
+                      margin: EdgeInsets.only(left: 30,right: 30),
+                      decoration: BoxDecoration(
+                        color: Color(0xFFEFF2F5),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
                       child: Row(
                         children: [
                           Text('Passport check:',style: GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.w300),),
-                          SizedBox(width: 350,),
+                          SizedBox(width: 300,),
                           DropdownButton(
                             value: dropdownvalue,
                             icon: const Icon(Icons.keyboard_arrow_down),
@@ -190,11 +198,16 @@ class _AdminHomeState extends State<AdminHome> {
                       ),
                     ),
                     SizedBox(height: 10,),
-                    Container(color: const Color(0xFFEFF2F5),
+                    Container( padding: EdgeInsets.only(left: 30),
+                      margin: EdgeInsets.only(left: 30,right: 30),
+                      decoration: BoxDecoration(
+                        color: Color(0xFFEFF2F5),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
                       child: Row(
                         children: [
-                          Text('Passport check:',style: GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.w300),),
-                          SizedBox(width: 350,),
+                          Text('Facial similarity report:',style: GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.w300),),
+                          SizedBox(width: 300,),
                           DropdownButton(
                             value: dropdownvalue,
                             icon: const Icon(Icons.keyboard_arrow_down),
@@ -222,11 +235,16 @@ class _AdminHomeState extends State<AdminHome> {
                       ),
                     ),
                     SizedBox(height: 10,),
-                    Container(color: const Color(0xFFEFF2F5),
+                    Container( padding: EdgeInsets.only(left: 30),
+                        margin: EdgeInsets.only(left: 30,right: 30),
+                        decoration: BoxDecoration(
+                          color: Color(0xFFEFF2F5),
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
                       child: Row(
                         children: [
-                          Text('Passport check:',style: GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.w300),),
-                          SizedBox(width: 350,),
+                          Text('Liveness check:',style: GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.w300),),
+                          SizedBox(width: 300,),
                           DropdownButton(
                             value: dropdownvalue,
                             icon: const Icon(Icons.keyboard_arrow_down),
@@ -255,16 +273,22 @@ class _AdminHomeState extends State<AdminHome> {
                     ),
                   ],
                 ),
-                Container(child: Text('Sanctions & PEP screening', style: GoogleFonts.nunito(fontSize: 18,color: Colors.white),),
+                const SizedBox(height: 30,),
+                Container(padding: EdgeInsets.only(left: 30),child: Text('Sanctions & PEP screening', style: GoogleFonts.nunito(fontSize: 18,color: Colors.white),),
                   color: const Color(0xFF4F5966,),width: double.infinity,),
                 const SizedBox(height: 30,),
                   Column(
                     children: [
-                      Container(color: const Color(0xFFEFF2F5),
+                      Container( padding: EdgeInsets.only(left: 30),
+                        margin: EdgeInsets.only(left: 30,right: 30),
+                        decoration: BoxDecoration(
+                          color: Color(0xFFEFF2F5),
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
                         child: Row(
                           children: [
-                            Text('Passport check:',style: GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.w300),),
-                            SizedBox(width: 350,),
+                            Text('UN Lists:',style: GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.w300),),
+                            SizedBox(width: 300,),
                             DropdownButton(
                               value: dropdownvalue,
                               icon: const Icon(Icons.keyboard_arrow_down),
@@ -292,11 +316,16 @@ class _AdminHomeState extends State<AdminHome> {
                         ),
                       ),
                       SizedBox(height: 10,),
-                      Container(color: const Color(0xFFEFF2F5),
+                      Container( padding: EdgeInsets.only(left: 30),
+                        margin: EdgeInsets.only(left: 30,right: 30),
+                        decoration: BoxDecoration(
+                          color: Color(0xFFEFF2F5),
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
                         child: Row(
                           children: [
-                            Text('Passport check:',style: GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.w300),),
-                            SizedBox(width: 350,),
+                            Text('KZ Lists:',style: GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.w300),),
+                            SizedBox(width: 300,),
                             DropdownButton(
                               value: dropdownvalue,
                               icon: const Icon(Icons.keyboard_arrow_down),
@@ -324,11 +353,16 @@ class _AdminHomeState extends State<AdminHome> {
                         ),
                       ),
                       SizedBox(height: 10,),
-                      Container(color: const Color(0xFFEFF2F5),
+                      Container( padding: EdgeInsets.only(left: 30),
+                        margin: EdgeInsets.only(left: 30,right: 30),
+                        decoration: BoxDecoration(
+                          color: Color(0xFFEFF2F5),
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
                         child: Row(
                           children: [
-                            Text('Passport check:',style: GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.w300),),
-                            SizedBox(width: 350,),
+                            Text('PEP:',style: GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.w300),),
+                            SizedBox(width: 300,),
                             DropdownButton(
                               value: dropdownvalue,
                               icon: const Icon(Icons.keyboard_arrow_down),
@@ -356,11 +390,16 @@ class _AdminHomeState extends State<AdminHome> {
                         ),
                       ),
                       SizedBox(height: 10,),
-                      Container(color: const Color(0xFFEFF2F5),
+                      Container( padding: EdgeInsets.only(left: 30),
+                        margin: EdgeInsets.only(left: 30,right: 30),
+                        decoration: BoxDecoration(
+                          color: Color(0xFFEFF2F5),
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
                         child: Row(
                           children: [
-                            Text('Passport check:',style: GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.w300),),
-                            SizedBox(width: 350,),
+                            Text('Country:',style: GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.w300),),
+                            SizedBox(width: 300,),
                             DropdownButton(
                               value: dropdownvalue,
                               icon: const Icon(Icons.keyboard_arrow_down),
@@ -390,17 +429,24 @@ class _AdminHomeState extends State<AdminHome> {
 
                     ],
                   ),
-                Container(child: Text('Address report', style: GoogleFonts.nunito(fontSize: 18,color: Colors.white),),
+                const SizedBox(height: 30,),
+
+                Container(padding: EdgeInsets.only(left: 30),child: Text('Address report', style: GoogleFonts.nunito(fontSize: 18,color: Colors.white),),
                   color: const Color(0xFF4F5966,),width: double.infinity,),
                 const SizedBox(height: 30,),
                   Column(
                     children: [
                       SizedBox(height: 10,),
-                      Container(color: const Color(0xFFEFF2F5),
+                      Container( padding: EdgeInsets.only(left: 30),
+                        margin: EdgeInsets.only(left: 30,right: 30),
+                        decoration: BoxDecoration(
+                          color: Color(0xFFEFF2F5),
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
                         child: Row(
                           children: [
-                            Text('Passport check:',style: GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.w300),),
-                            SizedBox(width: 350,),
+                            Text('Address check:',style: GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.w300),),
+                            SizedBox(width: 300,),
                             DropdownButton(
                               value: dropdownvalue,
                               icon: const Icon(Icons.keyboard_arrow_down),
@@ -441,32 +487,37 @@ class _AdminHomeState extends State<AdminHome> {
                     child: new ButtonBar(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        TextButton(
+                        ElevatedButton(
+                          onPressed: () {},
+                          style: ButtonStyle(
+                            //fixedSize: const Size(120,50),
+                            shape: MaterialStateProperty.all(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                              ),
+                            ),
+                          ),
                           child: Text('Принять', style: GoogleFonts.nunito(fontSize: 14, fontWeight: FontWeight.w700),),
-                          style: TextButton.styleFrom(
-                            primary: Colors.white,
-                            backgroundColor: const Color(0xFF247CFF),
-                          ),
-                          onPressed: () {/** */},
                         ),
-                        const SizedBox(width: 20,),
-                        TextButton(
-                          child: Text('Отклонить', style: GoogleFonts.nunito(fontSize: 14, fontWeight: FontWeight.w700),),
-                          style: TextButton.styleFrom(
-                            primary: const Color(0xFF0C4471),
-                            backgroundColor: Colors.white,
-                          ),
-                          onPressed: () {/** */},
+                        ElevatedButton(
+                          child: Text('Отклонить', style: GoogleFonts.nunito(fontSize: 14, fontWeight: FontWeight.w700),),  onPressed: () {},
+                            style: ButtonStyle(
+                              shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30.0),
+                                ),
+                              ),),),
+                            ElevatedButton(
+                          onPressed: () {},
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                              ),
+                            ),),
+                            child: Text('Доп. проверка', style: GoogleFonts.nunito(fontSize: 14, fontWeight: FontWeight.w700),
                         ),
-                        const SizedBox(width: 20,),
-                        TextButton(
-                          child: Text('Доп. проверка', style: GoogleFonts.nunito(fontSize: 14, fontWeight: FontWeight.w700),),
-                          style: TextButton.styleFrom(
-                            primary: const Color(0xFF0C4471),
-                            backgroundColor: Colors.white,
-                          ),
-                          onPressed: () {/** */},
-                        ),
+                            ),
                       ],
                     ),
                   ),
@@ -477,8 +528,3 @@ class _AdminHomeState extends State<AdminHome> {
         ),
       ),);
   }}
-
-
-
-
-
