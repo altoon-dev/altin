@@ -1,15 +1,16 @@
 import 'package:altyn_login/pages/admin_panel/admin_home.dart';
 import 'package:flutter/material.dart';
-import 'login/login_screen.dart';
+import 'package:altyn_login/di/dependency_injection.dart' as sl;
 
-void main() {
+void main() async {
+  await sl.init();
+  await sl.di.allReady();
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,11 +19,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const AdminHome(),
-      //initialRoute: '/login',
-      //routes: {
-      //  'login': (_) => LoginScreen(),
-
-     // }
     );
   }
 }

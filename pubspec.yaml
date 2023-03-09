@@ -8,27 +8,22 @@ version: 1.0.0+1
 environment:
   sdk: '>=2.18.2 <3.0.0'
 
-
 dependencies:
+  connectivity_plus: ^3.0.3
+  cupertino_icons: ^1.0.2
+  dio: ^5.0.0
   flutter:
     sdk: flutter
-
-
-
-  cupertino_icons: ^1.0.2
   flutter_svg: ^2.0.1
+  get_it: ^7.2.0
+  google_fonts: ^4.0.3
+  mask_text_input_formatter: ^2.4.0
+  shared_preferences: ^2.0.18
 
 dev_dependencies:
+  flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
-
-
-  flutter_lints: ^2.0.0
-  mask_text_input_formatter: ^2.4.0
-  dio: ^5.0.0
-  google_fonts: ^4.0.3
-
-
 
 flutter:
 
@@ -37,11 +32,8 @@ flutter:
   assets:
     - images/
 
-
-
 #  fonts:
 #    - family: Montserrat
 #      fonts:
 #        - asset: fonts/Montserrat/static/Montserrat-Regular.ttf
 #
-
