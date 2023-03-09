@@ -1,33 +1,23 @@
-import 'dart:io';
-import 'package:altyn_login/login/login_service.dart';
-import 'package:altyn_login/login/user_login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:dio/dio.dart';
+import 'package:provider/provider.dart';
+import '../repository/login_repository.dart';
+import '../view_model/login_view_model.dart';
 
-import 'login_interface.dart';
-
-
-var maskFormatter = new MaskTextInputFormatter(
+var maskFormatter = MaskTextInputFormatter(
     mask: '+7 (###) ###-##-##',
-    filter: { "#": RegExp(r'[0-9]') },
-    type: MaskAutoCompletionType.lazy
-);
+    filter: {"#": RegExp(r'[0-9]')},
+    type: MaskAutoCompletionType.lazy);
 
+class LoginScreen extends StatelessWidget {
+  LoginScreen({super.key});
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  final LoginRepository _loginService = LoginRepository();
 
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
+  final TextEditingController _emailController =
+      TextEditingController(text: "");
 
-
-class _LoginScreenState extends State<LoginScreen> {
-  final ILogin _loginService = LoginService();
-  final TextEditingController _emailController = TextEditingController(text: "");
-  bool _isObscure = true;
   final TextEditingController _passwordController = TextEditingController();
 
   //final formKey = GlobalKey<FormState>();
@@ -35,6 +25,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var viewModel = context.watch<ViewModel>();
+
     return Scaffold(
       body: SafeArea(
         child: Form(
@@ -68,8 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 flex: 10,
                 child: Container(
                   constraints: BoxConstraints(
-                    maxWidth:
-                    MediaQuery.of(context).size.width / 1.2,
+                    maxWidth: MediaQuery.of(context).size.width / 1.2,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -78,19 +69,23 @@ class _LoginScreenState extends State<LoginScreen> {
                       SizedBox(
                         height: 30,
                       ),
-                  Container(
-                    width: 500,
+                      Container(
+                        width: 500,
                         child: TextFormField(
                           inputFormatters: [maskFormatter],
                           controller: _emailController,
                           decoration: InputDecoration(
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFFA1B4D0).withOpacity(0.25),),),
+                              borderSide: BorderSide(
+                                color: Color(0xFFA1B4D0).withOpacity(0.25),
+                              ),
+                            ),
                             focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.blue),),
+                              borderSide: BorderSide(color: Colors.blue),
+                            ),
                             border: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.red),
-                              ),
+                            ),
                             hintText: "Login",
                             hintStyle: TextStyle(
                               color: Color(0xFF65849D),
@@ -98,8 +93,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             fillColor: Color(0xFF65849D),
                           ),
                           validator: (String? phoneNumber) {
-                            print(phoneNumber);
-                            if (phoneNumber != null && phoneNumber.length < 19) {
+                            if (phoneNumber != null &&
+                                phoneNumber.length < 18) {
                               return "Phone number is not correct!";
                             }
                             return null;
@@ -109,48 +104,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       SizedBox(
                         height: 20,
                       ),
-                       Container(
-                         width: 500,
-                         child: TextFormField(
-                           textInputAction: TextInputAction.done,
-                      //  onEditingComplete: ()async{
-                          ////   UserModel? user = await _loginService.login(_emailController.text,_passwordController.text );
-                          //   Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) =>LoginScreen(user:user))
-
-                          //},
-                          controller: _passwordController,
-                          obscureText: _isObscure,
-                          decoration: InputDecoration(
-                         enabledBorder: UnderlineInputBorder(
-                         borderSide: BorderSide(color: Color(0xFFA1B4D0).withOpacity(0.25),),),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.blue),),
-                            border: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.red,),
-                              ),
-                            hintText: "Password",
-                            //errorText: "Неверный пароль!",
-                            suffixIcon: IconButton(
-                              icon: Icon(_isObscure ? Icons.visibility : Icons.visibility_off),
-                              onPressed: (){
-                                setState(() {
-                                  _isObscure = !_isObscure;
-                                });
-                              },
-                            ),
-                            hintStyle: TextStyle(
-                              color: Color(0xFF65849D),
-                            ),
-                            fillColor: Color(0xFF65849D),
-                          ),
-                           validator: (String? UserName) {
-                             if (UserName != null && UserName.isEmpty) {
-                               return "Email can't be empty";
-                             }
-                             return null;
-                           },
-                      ),
-                       ),
+                      PasswordTextField(
+                          passwordController: _passwordController),
                       SizedBox(
                         height: 10,
                       ),
@@ -174,15 +129,20 @@ class _LoginScreenState extends State<LoginScreen> {
                       FilledButton(
                         style: ButtonStyle(
                           minimumSize: MaterialStateProperty.all(
-                            Size(200,60),),
+                            Size(200, 60),
+                          ),
                           backgroundColor: MaterialStateColor.resolveWith(
-                                (states) => Color(0xFF448BF5),
+                            (states) => Color(0xFF448BF5),
                           ),
                         ),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            // If the form is valid, display a snackbar. In the real world,
-                            // you'd often call a server or save the information in a database.
+                            print(_emailController.text);
+                            print(_passwordController.text);
+                            viewModel.login(
+                              _emailController.text,
+                              _passwordController.text,
+                            );
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(content: Text('Processing Data')),
                             );
@@ -201,6 +161,70 @@ class _LoginScreenState extends State<LoginScreen> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  static Widget create() => ChangeNotifierProvider(
+        create: (_) => ViewModel(),
+        child: LoginScreen(),
+      );
+}
+
+class PasswordTextField extends StatelessWidget {
+  const PasswordTextField({
+    super.key,
+    required TextEditingController passwordController,
+  }) : _passwordController = passwordController;
+
+  final TextEditingController _passwordController;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 500,
+      child: TextFormField(
+        textInputAction: TextInputAction.done,
+        //  onEditingComplete: ()async{
+        ////   UserModel? user = await _loginService.login(_emailController.text,_passwordController.text );
+        //   Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) =>LoginScreen(user:user))
+
+        //},
+        controller: _passwordController,
+        decoration: InputDecoration(
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Color(0xFFA1B4D0).withOpacity(0.25),
+            ),
+          ),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.blue),
+          ),
+          border: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.red,
+            ),
+          ),
+          hintText: "Password",
+          //errorText: "Неверный пароль!",
+          // suffixIcon: IconButton(
+          //   // icon: Icon(_isObscure
+          //   //     ? Icons.visibility
+          //   //     : Icons.visibility_off),
+          //   onPressed: () {
+          //   },
+          // ),
+          hintStyle: TextStyle(
+            color: Color(0xFF65849D),
+          ),
+          fillColor: Color(0xFF65849D),
+        ),
+        validator: (String? UserName) {
+          if (UserName != null && UserName.isEmpty) {
+            return "Email can't be empty";
+          }
+          return null;
+        },
       ),
     );
   }

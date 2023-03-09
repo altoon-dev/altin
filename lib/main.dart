@@ -1,4 +1,5 @@
 import 'package:altyn_login/pages/admin_panel/admin_home.dart';
+import 'package:altyn_login/pages/login/view/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:altyn_login/di/dependency_injection.dart' as sl;
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const AdminHome(),
+      home: LoginScreen.create(),
     );
   }
 }

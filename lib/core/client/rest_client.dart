@@ -15,14 +15,10 @@ class RestClientService {
 
   Interceptor _baseInterceptor() {
     return InterceptorsWrapper(onRequest: (options, handler) async {
-      var storageToken = await _tokenStorage.readAccessToken();
-
-      if (storageToken != null && storageToken.isNotEmpty) {
-        options.headers.addAll({
-          "Authorization": 'Bearer $storageToken',
-          "Content-Type": 'application/x-www-form-urlencoded',
-        });
-      }
+      options.headers.addAll({
+        "Authorization": 'Basic YXBwOkY0UnZVRzRYQ2k=',
+        "Content-Type": 'application/x-www-form-urlencoded',
+      });
       return handler.next(options);
     }, onError: (error, handler) {
       //REFRESH TOKEN
