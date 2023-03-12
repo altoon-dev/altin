@@ -16,8 +16,43 @@ class _ListPageState extends State<ListPage> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('title'),),
-      drawer: Drawer(
+      appBar: AppBar(title: Text('title'),
+      actions: [
+        Row(
+        children: [
+          const CircleAvatar(
+        radius: 20,
+        backgroundImage: NetworkImage('https://img.republicworld.com/republic-prod/stories/promolarge/xhdpi/nhntnouqoyudczy1_1603714428.jpeg'),),
+      const SizedBox(
+        width: 20,
+      ),
+      Text(
+        "Zhursunali Bagdar",
+        style: GoogleFonts.nunito(
+            fontSize: 20, color: Colors.white),
+      ),
+      const SizedBox(
+        width: 5,
+      ),
+      const Icon(Icons.arrow_drop_down, color: Colors.white),
+      const SizedBox(
+        width: 20,
+      ),
+      const Icon(Icons.language, color: Colors.white,),
+      const SizedBox(width: 10),
+      Text(
+        "Рус",
+        style: GoogleFonts.nunito(
+            fontSize: 20, color: Colors.white),
+      ),
+      const SizedBox(width: 10),
+      const Icon(
+        Icons.arrow_drop_down,
+        color: Colors.white,
+      ),
+    ],
+    ),],),
+    drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
@@ -56,51 +91,10 @@ class _ListPageState extends State<ListPage> {
               Container(
                 padding: const EdgeInsets.all(5),
                 color: const Color(0xFF2A3037),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Row(
-                      children: [
-                        const CircleAvatar(
-                          radius: 20,
-                          backgroundImage: NetworkImage('https://img.republicworld.com/republic-prod/stories/promolarge/xhdpi/nhntnouqoyudczy1_1603714428.jpeg'),),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          "Zhursunali Bagdar",
-                          style: GoogleFonts.nunito(
-                              fontSize: 20, color: Colors.white),
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        const Icon(Icons.arrow_drop_down, color: Colors.white),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        const Icon(Icons.language, color: Colors.white,),
-                        const SizedBox(width: 10),
-                        Text(
-                          "Рус",
-                          style: GoogleFonts.nunito(
-                              fontSize: 20, color: Colors.white),
-                        ),
-                        const SizedBox(width: 10),
-                        const Icon(
-                          Icons.arrow_drop_down,
-                          color: Colors.white,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
+                child: Text('hi')
       ),
-    );
+    ]),
+    ),),);
   }
 }
 
