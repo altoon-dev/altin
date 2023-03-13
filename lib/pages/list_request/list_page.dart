@@ -3,6 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:altyn_login/widgets.dart';
 
+import '../../TextIcon_widget.dart';
+
 class ListPage extends StatefulWidget {
   const ListPage({Key? key}) : super(key: key);
 
@@ -15,8 +17,24 @@ class _ListPageState extends State<ListPage> {
 
 
   Widget build(BuildContext context) {
+    late TextEditingController _controller;
+
+    @override
+    void initState() {
+      super.initState();
+      _controller = TextEditingController();
+    }
+
+    @override
+    void dispose() {
+      _controller.dispose();
+      super.dispose();
+    }
+
     return Scaffold(
-      appBar: AppBar(title: Text('title'),
+      //backgroundColor: Color(0xFF7B7886),
+      appBar: AppBar(title: Text(''),
+      backgroundColor: Color(0xFF2A3037),
       actions: [
         Row(
         children: [
@@ -58,13 +76,13 @@ class _ListPageState extends State<ListPage> {
           children: [
             const DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Colors.white,
               ),
-              child: Text('Drawer Header'),
+              child: Text('altosh')
             ),
             ListTile(
               leading: Icon(
-                Icons.home,
+                Icons.home,color: Color(0xFF2A3037),
               ),
               title: const Text('Page 1'),
               onTap: () {
@@ -73,6 +91,7 @@ class _ListPageState extends State<ListPage> {
             ),
             ListTile(
               leading: Icon(
+                color: Color(0xFF2A3037),
                 Icons.train,
               ),
               title: const Text('Page 2'),
@@ -84,17 +103,93 @@ class _ListPageState extends State<ListPage> {
         ),
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
+        child:
+    //SingleChildScrollView(child:
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                padding: const EdgeInsets.all(5),
-                color: const Color(0xFF2A3037),
-                child: Text('hi')
-      ),
-    ]),
-    ),),);
+                padding: const EdgeInsets.only(left: 15,right: 15,top: 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(20),
+                          width:400,
+                          child:
+                        TextField(
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
+                            hintText: 'Поиск',
+                            prefixIcon: Icon(Icons.search,color: Color(0xFFAABCD0),),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                          ),
+                        ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Icon(Icons.notifications, color: Color(0xFF2A3037),),
+                        SizedBox(width: 10,),
+                        RichText(
+                          text: TextSpan(
+                            text: "2",
+                            style: GoogleFonts.nunito(color: Color(0xFF0092FF), fontSize: 20, fontWeight: FontWeight.w700),
+                            children: <TextSpan>[
+                              TextSpan(text: ' новых запроса', style: GoogleFonts.nunito(
+                                  fontSize: 18, fontWeight: FontWeight.w400, color: Color(0xFF1A191E)),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.only(left:30,right: 30, top: 30),
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextIcon(text: '№:', icon: Icons.arrow_downward,),
+                    TextIcon(text: 'Имя:', icon: Icons.arrow_downward),
+                    TextIcon(text: 'Фамилия:', icon: Icons.arrow_downward),
+                    TextIcon(text: 'Отчество:', icon: Icons.arrow_downward),
+                    TextIcon(text: 'ИИН', icon: Icons.arrow_downward),
+                    TextIcon(text: 'Номер тел.:', icon: Icons.arrow_downward),
+                    TextIcon(text: 'Дата регист-ии:', icon: Icons.arrow_upward),
+                    TextIcon(text: 'Статус запроса:', icon: Icons.arrow_drop_down),
+                  ],
+                ),
+              ),
+              ListView.builder(
+                  itemCount: 60,
+                  itemBuilder: (context, position) {
+                    return Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                    child: Row(
+                      children: [
+                        Text(
+                    position.toString(),
+                    style: TextStyle(fontSize: 22.0),
+                      ),],
+                      ),
+                    ),);
+              })
+            ],),
+        //),
+        ),
+    );
   }
 }
+
+
 
