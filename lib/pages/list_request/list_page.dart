@@ -32,6 +32,7 @@ class _ListPageState extends State<ListPage> {
     }
 
     return Scaffold(
+      //backgroundColor: Colors.black,
       //backgroundColor: Color(0xFF7B7886),
       appBar: AppBar(title: Text(''),
       backgroundColor: Color(0xFF2A3037),
@@ -104,9 +105,9 @@ class _ListPageState extends State<ListPage> {
       ),
       body: SafeArea(
         child:
-    //SingleChildScrollView(child:
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          SingleChildScrollView(child:
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
                 padding: const EdgeInsets.only(left: 15,right: 15,top: 5),
@@ -169,23 +170,249 @@ class _ListPageState extends State<ListPage> {
                   ],
                 ),
               ),
-              ListView.builder(
-                  itemCount: 60,
-                  itemBuilder: (context, position) {
-                    return Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(20.0),
-                    child: Row(
-                      children: [
-                        Text(
-                    position.toString(),
-                    style: TextStyle(fontSize: 22.0),
-                      ),],
-                      ),
-                    ),);
-              })
+              SizedBox(height: 10,),
+              Container(
+                margin: EdgeInsets.only(left: 20,right: 20),
+                decoration: BoxDecoration(
+                  color: Color(0xFFF5FCFF),
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                ),
+                padding: EdgeInsets.only(left:15,right: 15,top: 15,bottom: 15),
+                child: const Row(
+                  //crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('83'),
+                    Text('Хабиб'),
+                    Text('Нурмагомедов'),
+                    Text('Абдулманапович'),
+                    Text('880920300123'),
+                    Text('+7-701-777-77-77'),
+                    Text('2022-12-09  09:41:15'),
+                    Text('Ожидает одобрения'),
+
+                  ],
+                ),
+              ),
+              SizedBox(height: 10,),
+              Container(
+                margin: EdgeInsets.only(left: 20,right: 20),
+                decoration: BoxDecoration(
+                  color: Color(0xFFF5FCFF),
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                ),
+                padding: EdgeInsets.only(left:15,right: 15,top: 15,bottom: 15),
+                child: const Row(
+                  //crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('83'),
+                    Text('Хабиб'),
+                    Text('Нурмагомедов'),
+                    Text('Абдулманапович'),
+                    Text('880920300123'),
+                    Text('+7-701-777-77-77'),
+                    Text('2022-12-09  09:41:15'),
+                    Text('Ожидает одобрения'),
+
+                  ],
+                ),
+              ),
+              SizedBox(height: 10,),
+              Container(
+                margin: EdgeInsets.only(left: 20,right: 20),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                ),
+                padding: EdgeInsets.only(left:15,right: 15,top: 15,bottom: 15),
+                child: const Row(
+                  //crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('83'),
+                    Text('Хабиб'),
+                    Text('Нурмагомедов'),
+                    Text('Абдулманапович'),
+                    Text('880920300123'),
+                    Text('+7-701-777-77-77'),
+                    Text('2022-12-09  09:41:15'),
+                    Text('Ожидает одобрения'),
+
+                  ],
+                ),
+              ),
+              SizedBox(height: 10,),
+              Container(
+                margin: EdgeInsets.only(left: 20,right: 20),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                ),
+                padding: EdgeInsets.only(left:15,right: 15,top: 15,bottom: 15),
+                child: const Row(
+                  //crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('83'),
+                    Text('Хабиб'),
+                    Text('Нурмагомедов'),
+                    Text('Абдулманапович'),
+                    Text('880920300123'),
+                    Text('+7-701-777-77-77'),
+                    Text('2022-12-09  09:41:15'),
+                    Text('Ожидает одобрения'),
+
+                  ],
+                ),
+              ),
+              SizedBox(height: 10,),
+              Container(
+                margin: EdgeInsets.only(left: 20,right: 20),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                ),
+                padding: EdgeInsets.only(left:15,right: 15,top: 15,bottom: 15),
+                child: const Row(
+                  //crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('83'),
+                    Text('Хабиб'),
+                    Text('Нурмагомедов'),
+                    Text('Абдулманапович'),
+                    Text('880920300123'),
+                    Text('+7-701-777-77-77'),
+                    Text('2022-12-09  09:41:15'),
+                    Text('Ожидает одобрения'),
+
+                  ],
+                ),
+              ),
+              SizedBox(height: 10,),
+              Container(
+                margin: EdgeInsets.only(left: 20,right: 20),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                ),
+                padding: EdgeInsets.only(left:15,right: 15,top: 15,bottom: 15),
+                child: const Row(
+                  //crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('83'),
+                    Text('Хабиб'),
+                    Text('Нурмагомедов'),
+                    Text('Абдулманапович'),
+                    Text('880920300123'),
+                    Text('+7-701-777-77-77'),
+                    Text('2022-12-09  09:41:15'),
+                    Text('Ожидает одобрения'),
+
+                  ],
+                ),
+              ),
+              SizedBox(height: 10,),
+              Container(
+                margin: EdgeInsets.only(left: 20,right: 20),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                ),
+                padding: EdgeInsets.only(left:15,right: 15,top: 15,bottom: 15),
+                child: const Row(
+                  //crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('83'),
+                    Text('Хабиб'),
+                    Text('Нурмагомедов'),
+                    Text('Абдулманапович'),
+                    Text('880920300123'),
+                    Text('+7-701-777-77-77'),
+                    Text('2022-12-09  09:41:15'),
+                    Text('Ожидает одобрения'),
+
+                  ],
+                ),
+              ),
+              SizedBox(height: 10,),
+              Container(
+                margin: EdgeInsets.only(left: 20,right: 20),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                ),
+                padding: EdgeInsets.only(left:15,right: 15,top: 15,bottom: 15),
+                child: const Row(
+                  //crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('83'),
+                    Text('Хабиб'),
+                    Text('Нурмагомедов'),
+                    Text('Абдулманапович'),
+                    Text('880920300123'),
+                    Text('+7-701-777-77-77'),
+                    Text('2022-12-09  09:41:15'),
+                    Text('Ожидает одобрения'),
+
+                  ],
+                ),
+              ),
+              SizedBox(height: 10,),
+              Container(
+                margin: EdgeInsets.only(left: 20,right: 20),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                ),
+                padding: EdgeInsets.only(left:15,right: 15,top: 15,bottom: 15),
+                child: const Row(
+                  //crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('83'),
+                    Text('Хабиб'),
+                    Text('Нурмагомедов'),
+                    Text('Абдулманапович'),
+                    Text('880920300123'),
+                    Text('+7-701-777-77-77'),
+                    Text('2022-12-09  09:41:15'),
+                    Text('Ожидает одобрения'),
+
+                  ],
+                ),
+              ),
+              SizedBox(height: 10,),
+              Container(
+                margin: EdgeInsets.only(left: 20,right: 20),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                ),
+                padding: EdgeInsets.only(left:15,right: 15,top: 15,bottom: 15),
+                child: const Row(
+                  //crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('83'),
+                    Text('Хабиб'),
+                    Text('Нурмагомедов'),
+                    Text('Абдулманапович'),
+                    Text('880920300123'),
+                    Text('+7-701-777-77-77'),
+                    Text('2022-12-09  09:41:15'),
+                    Text('Ожидает одобрения'),
+
+                  ],
+                ),
+              ),
+
             ],),
-        //),
+        ),
         ),
     );
   }
