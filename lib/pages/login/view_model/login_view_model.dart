@@ -9,14 +9,16 @@ class ViewModel extends ChangeNotifier {
 
   final LoginRepositoryInterface _repository;
 
-  Future<void> login(String email, String password) async {
-    final result = await _repository.login(email, password);
+  Future<bool> login(String phoneNumber, String password) async {
+    final result = await _repository.login(phoneNumber, password);
     if (result.isRight) {
       print('Success: ${result.right}');
+      notifyListeners();
+      return true;
     } else {
       print(result.left);
+      notifyListeners();
+      return false;
     }
-
-    notifyListeners();
   }
 }
