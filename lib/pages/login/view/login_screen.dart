@@ -135,17 +135,29 @@ class LoginScreen extends StatelessWidget {
                             (states) => Color(0xFF448BF5),
                           ),
                         ),
-                        onPressed: () {
+                        onPressed: () async {
                           if (_formKey.currentState!.validate()) {
-                            print(_emailController.text);
-                            print(_passwordController.text);
-                            viewModel.login(
-                              _emailController.text,
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('Loading...')),
+                            );
+                            bool isSignedIn = await viewModel.login(
+                              "+${_emailController.text.replaceAll(RegExp(r'\D'), "")}",
                               _passwordController.text,
                             );
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Processing Data')),
-                            );
+                            if (isSignedIn) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                    content: Text('Successfully signed in!')),
+                              );
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text(
+                                    'Incorrect phone number or password.',
+                                  ),
+                                ),
+                              );
+                            }
                           }
                         },
                         child: Text("ВОЙТИ"),

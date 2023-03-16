@@ -19,7 +19,7 @@ Future<void> init() async {
   di.registerLazySingleton(() => Connectivity());
   di.registerLazySingleton(() => Dio());
 
-  di.registerLazySingleton(() => RestClientService(di<Dio>()));
+  di.registerLazySingleton(() => RestClientService());
 
   di.registerLazySingleton<NetworkInfo>(
     () => NetworkInfoImpl(connectivity: di<Connectivity>()),
