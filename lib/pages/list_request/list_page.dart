@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:altyn_login/widgets.dart';
-
 import '../../TextIcon_widget.dart';
 
 class ListPage extends StatefulWidget {
@@ -33,7 +30,7 @@ class _ListPageState extends State<ListPage> {
 
     return Scaffold(
       //backgroundColor: Colors.black,
-      //backgroundColor: Color(0xFF7B7886),
+      backgroundColor: Color(0xFF7B7886),
       appBar: AppBar(title: Text(''),
       backgroundColor: Color(0xFF2A3037),
       actions: [
@@ -417,6 +414,3 @@ class _ListPageState extends State<ListPage> {
     );
   }
 }
-
-
-
