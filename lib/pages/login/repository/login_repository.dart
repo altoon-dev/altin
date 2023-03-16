@@ -10,29 +10,28 @@ class LoginRepository extends BaseRepository
     implements LoginRepositoryInterface {
   @override
   Future<Either<Failure, UserModel>> login(
-    String email,
-    String password,
-  ) async {
-    final data = {"email": email, "password": password};
+      String phoneNumber,
+      String password,
+      ) async {
+    final data = {
+      "username": phoneNumber,
+      "password": password,
+      "scope": 'coreapi',
+      "grant_type": 'password',
+    };
 
     final result = call(
       RestMethod.post,
-      '$apiBaseUrl/$auth',
+      auth,
       body: data,
-      parametres: {
-        "scope": 'coreapi',
-        "grant_type": 'password',
-      },
     );
     return result.then<Either<Failure, UserModel>>(
-      (either) => either.map(
-        (e) {
-          print(e);
+          (either) => either.map<Failure, UserModel>(
+            (e) {
           return Left<Failure, UserModel>(e);
         },
-        (r) {
-          print(r);
-          return Right<Failure, UserModel>(UserModel.fromJson(r));
+            (r) {
+          return Right<Failure, UserModel>(UserModel.fromMap(r));
         },
       ),
     );

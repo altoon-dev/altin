@@ -1,34 +1,30 @@
 import 'dart:async';
+import 'package:altyn_login/core/client/api_paths.dart';
 import 'package:dio/dio.dart';
-import 'package:altyn_login/core/services/TokenStorage/token_storage.dart';
-import 'package:altyn_login/di/dependency_injection.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class RestClientService {
   late Dio _client;
 
-  RestClientService(Dio client) {
-    _client = client;
-    _client.interceptors.add(_baseInterceptor());
-  }
-
-  final TokenStorage _tokenStorage = di<TokenStorage>();
-
-  Interceptor _baseInterceptor() {
-    return InterceptorsWrapper(onRequest: (options, handler) async {
-      options.headers.addAll({
-        "Authorization": 'Basic YXBwOkY0UnZVRzRYQ2k=',
-        "Content-Type": 'application/x-www-form-urlencoded',
-      });
-      return handler.next(options);
-    }, onError: (error, handler) {
-      //REFRESH TOKEN
-    });
+  RestClientService() {
+    _client = Dio(
+      BaseOptions(
+        baseUrl: apiBaseUrl,
+        headers: {
+          "Authorization": 'Basic YXBwOkY0UnZVRzRYQ2k=',
+        },
+        contentType: 'application/x-www-form-urlencoded',
+        receiveTimeout: const Duration(milliseconds: 30000),
+        connectTimeout: const Duration(milliseconds: 30000),
+      ),
+    );
+    _client.interceptors.add(PrettyDioLogger());
   }
 
   Future<Response> get(String url,
-          {Map<String, dynamic>? params,
-          CancelToken? cancelToken,
-          Options? options}) =>
+      {Map<String, dynamic>? params,
+        CancelToken? cancelToken,
+        Options? options}) =>
       _client.get(
         url,
         queryParameters: params,
@@ -37,7 +33,7 @@ class RestClientService {
       );
 
   Future<Response> post(String url,
-          {dynamic body, dynamic parametres, Options? options}) =>
+      {dynamic body, dynamic parametres, Options? options}) =>
       _client.post(
         url,
         data: body,
@@ -53,7 +49,7 @@ class RestClientService {
       );
 
   Future<Response> delete(String url,
-          {dynamic body, Options? options, Map<String, dynamic>? params}) =>
+      {dynamic body, Options? options, Map<String, dynamic>? params}) =>
       _client.delete(
         url,
         data: body,
@@ -62,11 +58,11 @@ class RestClientService {
       );
 
   Future<Response> patch(
-    String url, {
-    dynamic body,
-    Options? options,
-    Function(int, int)? onSendProgress,
-  }) =>
+      String url, {
+        dynamic body,
+        Options? options,
+        Function(int, int)? onSendProgress,
+      }) =>
       _client.patch(
         url,
         data: body,
