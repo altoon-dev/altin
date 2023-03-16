@@ -28,6 +28,7 @@ class _AdminHomeState extends State<AdminHome> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
                 padding: const EdgeInsets.all(5),
@@ -118,9 +119,11 @@ class _AdminHomeState extends State<AdminHome> {
                         Color(0xFFE4EAEE),
                       ],
                     )),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                child: Column(
                   children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
                     const CircleAvatar(
                       radius: 80,
                       backgroundImage: NetworkImage(
@@ -190,46 +193,40 @@ class _AdminHomeState extends State<AdminHome> {
                       ],
                     ),
                     Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'Дата подачи документов на регистрацию:',
-                          style: GoogleFonts.nunito(fontSize: 16),
-                        ),
-                        Text(
-                          'Дата рассмотрения заявок:',
-                          style: GoogleFonts.nunito(fontSize: 16),
-                        ),
-                        Text(
-                          'Дата регистраций клиента:',
-                          style: GoogleFonts.nunito(fontSize: 16),
-                        ),
+                        Text('Дата подачи документов на регистрацию:', style: GoogleFonts.nunito(fontSize: 16),),
+                        Text('Дата рассмотрения заявок:', style: GoogleFonts.nunito(fontSize: 16),),
+                        Text('Дата регистраций клиента:', style: GoogleFonts.nunito(fontSize: 16),),
+                        ],
+                    ),
+                        ],
+                ),
                         Container(
-                          width: 400,
                           alignment: Alignment.bottomRight,
                           child: InkWell(
                             onTap: () {},
                             child: Text(
-                              "Забыли пароль?",
-                              style: GoogleFonts.nunito(
-                                  fontSize: 20, fontWeight: FontWeight.w400),
+                              "скачать документы",
+                              style: GoogleFonts.nunito(fontSize: 20,color: Color(0xFF0092FF), fontWeight: FontWeight.w400),
                             ),
                           ),
-                        ),
-                      ],
+                        ), ],
                     ),
-                  ],
-                ),
               ),
               const SizedBox(
                 height: 20,
               ),
-              Text(
-                "KYC REPORTS",
-                style: GoogleFonts.nunito(
-                    fontSize: 28,
-                    fontWeight: FontWeight.w700,
-                    color: const Color(0xFF8FA0AB)),
+              Padding(
+                padding: const EdgeInsets.only(left: 30),
+                child: Text(
+                  "KYC REPORTS",
+                  style: GoogleFonts.nunito(
+                      fontSize: 28,
+                      fontWeight: FontWeight.w700,
+                      color: const Color(0xFF8FA0AB)),
+                ),
               ),
               const SizedBox(
                 height: 30,
@@ -246,7 +243,19 @@ class _AdminHomeState extends State<AdminHome> {
                 ),
               ),
               const SizedBox(
-                height: 30,
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text('Decision',
+                    style: GoogleFonts.nunito(fontSize: 18, color: Color(0xFF8FA0AB)),),
+                  Text('Reason',
+                    style: GoogleFonts.nunito(fontSize: 18, color: Color(0xFF8FA0AB)),),
+                ],
+              ),
+              const SizedBox(
+                height: 10,
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -260,54 +269,50 @@ class _AdminHomeState extends State<AdminHome> {
                     ),
                     child: Row(
                       children: [
-                        Text(
-                          'Passport check:',
-                          style: GoogleFonts.nunito(
-                              fontSize: 18, fontWeight: FontWeight.w300),
-                        ),
-                        const SizedBox(
-                          width: 300,
-                        ),
-                        DropdownButton(
-                          value: dropdownvalue,
-                          icon: const Icon(Icons.keyboard_arrow_down),
-                          items: items.map((String items) {
-                            return DropdownMenuItem(
-                              value: items,
-                              child: Text(items),
-                            );
-                          }).toList(),
-                          onChanged: (String? newValue) {
-                            setState(() {
-                              dropdownvalue = newValue!;
-                            });
-                          },
-                        ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        const Icon(
-                          Icons.done,
-                          color: Colors.green,
-                        ),
-                        const SizedBox(
-                          width: 300,
-                        ),
-                        const Flexible(
-                          child: TextField(
-                            decoration: InputDecoration(
-                              fillColor: Colors.white,
-                              filled: true,
-                              border: OutlineInputBorder(),
-                            ),
+                       // Expanded(        flex: 2,child:
+                            Text(
+                            'Passport check:',
+                            style: GoogleFonts.nunito(fontSize: 18, fontWeight: FontWeight.w300),
                           ),
+
+                       const SizedBox(width: 300,),
+                       // Expanded(flex: 1, child:
+                        DropdownButton(
+                            value: dropdownvalue,
+                            icon: const Icon(Icons.keyboard_arrow_down),
+                            items: items.map((String items) {
+                              return DropdownMenuItem(
+                                value: items,
+                                child: Text(items),
+                              );
+                            }).toList(),
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                dropdownvalue = newValue!;
+                              });
+                            },
+                          ),
+                       const SizedBox(width: 20,),
+                        // Expanded(flex: 1, child:
+                         Icon(
+                            Icons.done,
+                            color: Colors.green,
+                        ),
+                        const SizedBox(width: 300,),
+                        // Expanded(flex: 2,child:
+                           Flexible(
+                            child: TextField(
+                              decoration: InputDecoration(
+                                fillColor: Colors.white,
+                                filled: true,
+                                border: OutlineInputBorder(),
+                              ),
+                            ),
                         ),
                       ],
                     ),
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
+                 const SizedBox(height: 10,),
                   Container(
                     padding: const EdgeInsets.only(left: 30),
                     margin: const EdgeInsets.only(left: 30, right: 30),
@@ -435,9 +440,20 @@ class _AdminHomeState extends State<AdminHome> {
                   style: GoogleFonts.nunito(fontSize: 18, color: Colors.white),
                 ),
               ),
-              const SizedBox(
-                height: 30,
-              ),
+        const SizedBox(
+          height: 20,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text('Decision',
+              style: GoogleFonts.nunito(fontSize: 18, color: Color(0xFF8FA0AB)),),
+            Text('Reason',
+              style: GoogleFonts.nunito(fontSize: 18, color: Color(0xFF8FA0AB)),),
+          ],
+        ),
+        const SizedBox(
+          height: 10,),
               Column(
                 children: [
                   Container(
@@ -682,13 +698,22 @@ class _AdminHomeState extends State<AdminHome> {
                 ),
               ),
               const SizedBox(
-                height: 30,
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text('Decision',
+                    style: GoogleFonts.nunito(fontSize: 18, color: Color(0xFF8FA0AB)),),
+                  Text('Reason',
+                    style: GoogleFonts.nunito(fontSize: 18, color: Color(0xFF8FA0AB)),),
+                ],
+              ),
+              const SizedBox(
+                height: 10,
               ),
               Column(
                 children: [
-                  const SizedBox(
-                    height: 10,
-                  ),
                   Container(
                     padding: const EdgeInsets.only(left: 30),
                     margin: const EdgeInsets.only(left: 30, right: 30),
@@ -748,12 +773,15 @@ class _AdminHomeState extends State<AdminHome> {
               const SizedBox(
                 height: 30,
               ),
-              Text(
-                "Изменить статус пользователя",
-                style: GoogleFonts.nunito(
-                    fontSize: 28,
-                    fontWeight: FontWeight.w700,
-                    color: const Color(0xFF8FA0AB)),
+              Padding(
+                padding: const EdgeInsets.only(left: 550),
+                child: Text(
+                  "Изменить статус пользователя",
+                  style: GoogleFonts.nunito(
+                      fontSize: 28,
+                      fontWeight: FontWeight.w700,
+                      color: const Color(0xFF8FA0AB)),
+                ),
               ),
               const SizedBox(
                 height: 30,
