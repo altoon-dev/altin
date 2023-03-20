@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:altyn_login/widgets.dart';
+import 'package:altyn_login/widgets/widgets.dart';
+import 'package:altyn_login/route.dart' as route;
+
 
 class AdminHome extends StatefulWidget {
   const AdminHome({Key? key}) : super(key: key);
@@ -854,5 +856,4 @@ class _AdminHomeState extends State<AdminHome> {
       ),
     );
   }
-}
 }

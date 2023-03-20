@@ -4,6 +4,8 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 import '../repository/login_repository.dart';
 import '../view_model/login_view_model.dart';
+import 'package:altyn_login/route.dart' as route;
+
 
 var maskFormatter = MaskTextInputFormatter(
     mask: '+7 (###) ###-##-##',
@@ -136,6 +138,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                         ),
                         onPressed: () async {
+                          Navigator.pushNamed(context, route.adminPage);
                           if (_formKey.currentState!.validate()) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(content: Text('Loading...')),

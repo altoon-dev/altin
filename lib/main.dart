@@ -3,6 +3,8 @@ import 'package:altyn_login/pages/list_request/list_page.dart';
 import 'package:altyn_login/pages/login/view/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:altyn_login/di/dependency_injection.dart' as sl;
+import 'package:altyn_login/route.dart' as route;
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,17 +15,20 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
-  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Login Screen',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        useMaterial3: true,
       ),
-      home:
-      //ListPage()
-      AdminHome()
+      onGenerateRoute: route.controller,
+      initialRoute: route.listPage,
+      //home:
+
+     // ListPage()
+      //AdminHome()
       //LoginScreen.create(),
     );
   }
