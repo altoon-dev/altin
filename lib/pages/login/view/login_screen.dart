@@ -1,7 +1,9 @@
+import 'package:altyn_login/pages/admin_panel/admin_home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
+import '../../list_request/list_page.dart';
 import '../repository/login_repository.dart';
 import '../view_model/login_view_model.dart';
 import 'package:altyn_login/route.dart' as route;
@@ -138,7 +140,8 @@ class LoginScreen extends StatelessWidget {
                           ),
                         ),
                         onPressed: () async {
-                          Navigator.pushNamed(context, route.adminPage);
+                         // Navigator.pushNamed(context, route.adminPage);
+                          Navigator.pushNamed(context, '/home');
                           if (_formKey.currentState!.validate()) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(content: Text('Loading...')),
@@ -148,9 +151,13 @@ class LoginScreen extends StatelessWidget {
                               _passwordController.text,
                             );
                             if (isSignedIn) {
+                              Navigator.pushNamedAndRemoveUntil(
+                                  context, '/home', ModalRoute.withName('/home'));
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                     content: Text('Successfully signed in!')),
+
+                               // Navigator.push(context, MaterialPageRoute(builder: (context) => AdminHome()))
                               );
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(

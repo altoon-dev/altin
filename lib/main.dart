@@ -18,13 +18,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      routes: {
+        '/': (context) => ListPage(),
+    '/login': (context) => LoginScreen(),
+    '/home': (context) => AdminHome()},
       title: 'Login Screen',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         useMaterial3: true,
       ),
-      onGenerateRoute: route.controller,
-      initialRoute: route.listPage,
+     // onGenerateRoute: route.controller,
+      //initialRoute: route.listPage,
       //home:
 
      // ListPage()
