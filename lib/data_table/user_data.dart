@@ -1,4 +1,4 @@
-import 'package:altyn_login/user_transaction.dart';
+import 'package:altyn_login/data_table/user_transaction.dart';
 
 
 final allUsers = <User>[
